@@ -11,7 +11,8 @@ public class SorterFactory {
         SELECTION,
         INSERTION,
         SHELL,
-        QUICK
+        QUICK,
+        MERGE
     }
 
     public static ISortInterface createSorter(SorterTypes type) {
@@ -26,6 +27,8 @@ public class SorterFactory {
                 return new InsertionSort();
             case QUICK:
                 return new QuickSort();
+            case MERGE:
+                return new MergeSort();
             default:
                 return null;
         }

@@ -21,8 +21,10 @@ public class BubbleSort implements ISortInterface {
         System.out.println();
         System.out.println("Bubble sort implementation 1:");
 
+        int compCount = 0;
         for (int i = s.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {
+                compCount++;
                 if (s[j] > s[j + 1]) {
                     int t = s[j];
                     s[j] = s[j + 1];
@@ -37,6 +39,7 @@ public class BubbleSort implements ISortInterface {
             }
             System.out.println();
         }
+        System.out.print("compare count: " + compCount);// len * (len - 1) / 2
     }
 
     private void sortImpl_2(int[] s) {
