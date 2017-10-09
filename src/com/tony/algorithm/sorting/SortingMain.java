@@ -35,7 +35,7 @@ public class SortingMain {
 
 //        Random r = new Random();
 
-        int[] a = {2, 7, 6, 4, 3, 5, 8, 1, 0, 9};
+        int[] a = {2, 7, 49, 6, 4, 28, 3, 34, 5, 8, 1, 0, 9};
         // print the debug info:
         System.out.print("The original array: ");
         for (int k = 0; k < a.length; k++) {
@@ -44,7 +44,7 @@ public class SortingMain {
         System.out.println("; length: " + a.length);
 
         // mSortObj = getSortObj();
-        mSortObj = SorterFactory.createSorter(SorterTypes.QUICK);
+        mSortObj = SorterFactory.createSorter(SorterTypes.MERGE);
         mSortObj.sort(a);
     }
 }
