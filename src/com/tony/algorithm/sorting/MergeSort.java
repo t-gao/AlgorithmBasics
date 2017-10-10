@@ -24,12 +24,9 @@ public class MergeSort implements ISortInterface {
         }
 
         int start = f, end = l, mid = (start + end) / 2;
-        //if (l - f > 1) {
-            mergeSort1(s, start, mid);
-            mergeSort1(s, mid + 1, end);
-        //} else {
-            merge(s, start, mid, end);
-        //}
+        mergeSort1(s, start, mid);
+        mergeSort1(s, mid + 1, end);
+        merge(s, start, mid, end);
 
         System.out.print("The Result of the round: ");
         for (int k = 0; k < s.length; k++) {
@@ -39,25 +36,28 @@ public class MergeSort implements ISortInterface {
     }
 
     // Non-recursive
+    private void mergeSort3(int[] s, int f, int l) {
+        System.out.println("MergeSortImpl_3, f: " + f + ", l: " + l);
+        int N = l - f + 1;
+        for (int sz = 1; sz < N; sz *= 2)
+            for (int lo = f; lo <= l - sz; lo += sz + sz)
+                merge(s, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, l));
+    }
+
+    // Non-recursive
     private void mergeSort2(int[] s, int f, int l) {
         int len = l - f + 1;
-        // boolean isEven = len % 2 == 0;
         int temLen = 1, temEnd = 0;
-        do {
+        while (temLen < len) {
             System.out.println("loop, temLen: " + temLen);
-            for (int i = f; i <= l; i += 2 * temLen) {
+            for (int i = f; i <= l - temLen; i += (2 * temLen)) {
                 temEnd = i + 2 * temLen - 1;
                 if (temEnd > l) {
                     temEnd = l;
                 }
-                merge(s, i, (i + temEnd) / 2, temEnd);
+                merge(s, i, i + temLen - 1, temEnd);
             }
             temLen *= 2;
-        } while (temLen <= len / 2);
-
-        if (temLen < len) {
-            System.out.println("out of loop, temLen: " + temLen);
-            merge(s, f, temLen - 1, l);
         }
     }
 
