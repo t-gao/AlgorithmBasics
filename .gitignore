@@ -2,3 +2,8 @@ src/**/*.class
 bin
 bin/**/*.class
 .settings
+.idea
+out
+*.iml
+.project
+.classpath

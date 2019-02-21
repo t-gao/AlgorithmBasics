@@ -33,9 +33,16 @@ public class SortingMain {
 //        a[97] = 98;
 //        a[2] = 100;
 
-//        Random r = new Random();
+        Random r = new Random();
 
-        int[] a = {2, 7, 49, 6, 4, 28, 3, 34, 5, 8, 1, 12, 0, 9};
+//        int[] a = {2, 7, 49, 6, 4, 28, 3, 34, 5, 8, 1, 12, 0, 11};
+
+        int len = 371; // 太大会栈溢出，因为递归
+        int[] a = new int[len];
+        for (int i=0; i<len; i++) {
+            a[i] = r.nextInt(50000);
+        }
+
         // print the debug info:
         System.out.print("The original array: ");
         for (int k = 0; k < a.length; k++) {
@@ -44,7 +51,7 @@ public class SortingMain {
         System.out.println("; length: " + a.length);
 
         // mSortObj = getSortObj();
-        mSortObj = SorterFactory.createSorter(SorterTypes.MERGE);
+        mSortObj = SorterFactory.createSorter(SorterTypes.QUICK);
         mSortObj.sort(a);
     }
 }
